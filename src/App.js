@@ -50,12 +50,19 @@ function TextExpander({
     setExpandedText((expandText) => !expandText);
   }
 
+  const buttonStyle = {
+    color: buttonColor,
+    background: "transparent",
+    border: "none",
+    cursor: "pointer",
+  };
+
   return (
     <div className={className}>
       {expandText
-        ? children
-        : children.split(" ").slice(0, collapsedNumWords).join(" ")}
-      <button style={{ color: buttonColor }} onClick={handleExpand}>
+        ? children + " "
+        : children.split(" ").slice(0, collapsedNumWords).join(" ") + "... "}
+      <button style={buttonStyle} onClick={handleExpand}>
         {expandText ? collapseButtonText : expandButtonText}
       </button>
     </div>
